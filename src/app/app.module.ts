@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { PoligonosModule } from './poligonos/poligonos.module';
+import { PoligonoService } from './poligono.service';
 
 @NgModule({
   declarations: [
@@ -10,9 +12,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PoligonosModule
   ],
-  providers: [],
+  providers: [PoligonoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
