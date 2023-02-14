@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PoligonoService } from './poligono.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'proyectoHLC';
+
+  lado: number = 0;
+
+  constructor ( private poligonoService : PoligonoService ) {}
+
+  getLado() {
+
+    this.poligonoService.getLado(this.lado);
+  }
 }

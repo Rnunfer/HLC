@@ -1,1 +1,17 @@
-<h1>FUNCIONA?</h1>
+
+<div class="container mt-2">
+  <h1>Calculadora de polígonos regulares</h1>
+  <hr>
+  <div class="row">
+    <div class="col-3">
+      <app-aside></app-aside>
+    </div>
+    <div class="col-9">
+      <form (ngSubmit)="getLado()">
+        <label>Introduzca el valor del lado:</label>
+        <input type="number" name="lado" class="form-control" [(ngModel)]="lado">
+      </form>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
