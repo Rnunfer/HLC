@@ -10,4 +10,5 @@ export class PoligonoService {
   getLado(n:number) {
     console.log(n)
   }
+
 }
