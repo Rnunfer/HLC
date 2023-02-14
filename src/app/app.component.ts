@@ -15,6 +15,6 @@ export class AppComponent {
 
   getLado() {
 
-    this.poligonoService.getLado(this.lado);
+    this.poligonoService.getLado();
   }
 }

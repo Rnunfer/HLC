@@ -7,8 +7,8 @@ export class PoligonoService {
 
   constructor() { }
 
-  getLado(n:number) {
-    console.log(n)
+  getLado() {
+    return 5;
   }
 
 }
