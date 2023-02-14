@@ -18,6 +18,14 @@ import { TrianguloComponent } from './triangulo/triangulo.component';
     RectanguloComponent,
     TrianguloComponent
   ],
+  exports: [
+    CirculoComponent,
+    CuadradoComponent,
+    HexagonoComponent,
+    PentagonoComponent,
+    RectanguloComponent,
+    TrianguloComponent
+  ],
   imports: [
     CommonModule
   ]

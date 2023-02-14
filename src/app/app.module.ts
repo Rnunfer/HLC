@@ -5,10 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PoligonosModule } from './poligonos/poligonos.module';
 import { PoligonoService } from './poligono.service';
+import { AsideComponent } from './shared/aside/aside.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AsideComponent
   ],
   imports: [
     BrowserModule,
