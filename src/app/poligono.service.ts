@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class PoligonoService {
 
   constructor() { }
+
+  getLado(n:number) {
+    console.log(n)
+  }
 }
