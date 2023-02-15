@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {PoligonoService} from "../../poligono.service";
 
 @Component({
   selector: 'app-rectangulo',
@@ -7,5 +8,22 @@ import { Component } from '@angular/core';
   ]
 })
 export class RectanguloComponent {
+  perimetro : number;
+  area:number;
 
+
+  constructor(private poligonoService:PoligonoService){
+    this.perimetro= this.calcPerimetro(poligonoService.getLado());
+    this.area= this.calcArea(poligonoService.getLado());
+
+  }
+
+  calcPerimetro(lado:number) : number{
+    return 2*lado+2*Math.pow(lado, 2);
+  }
+
+
+  calcArea(lado:number) : number{
+    return lado*Math.pow(lado, 2);
+  }
 }
