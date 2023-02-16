@@ -1,4 +1,3 @@
-
 <div class="container mt-2">
   <h1>Calculadora de polígonos regulares</h1>
   <hr>
@@ -7,7 +6,7 @@
       <app-aside></app-aside>
     </div>
     <div class="col-9">
-      <form (ngSubmit)="getLado()">
+      <form (ngSubmit)="setLado(); calcular()">
         <label>Introduzca el valor del lado:</label>
         <input type="number" name="lado" class="form-control" [(ngModel)]="lado" style="max-width: 150px;">
       </form>
@@ -15,3 +14,4 @@
     </div>
   </div>
 </div>
+<app-footer></app-footer>

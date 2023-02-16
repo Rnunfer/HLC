@@ -13,8 +13,8 @@ export class RectanguloComponent {
 
 
   constructor(private poligonoService:PoligonoService){
-    this.perimetro= this.calcPerimetro(poligonoService.getLado());
-    this.area= this.calcArea(poligonoService.getLado());
+    this.perimetro= this.calcPerimetro(this.lado);
+    this.area= this.calcArea(this.lado);
 
   }
 
@@ -25,5 +25,9 @@ export class RectanguloComponent {
 
   calcArea(lado:number) : number{
     return lado*Math.pow(lado, 2);
+  }
+
+  get lado() {
+    return this.poligonoService.lado;
   }
 }

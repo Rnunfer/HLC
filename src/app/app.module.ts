@@ -7,11 +7,13 @@ import { PoligonosModule } from './poligonos/poligonos.module';
 import { PoligonoService } from './poligono.service';
 import { AsideComponent } from './shared/aside/aside.component';
 import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AsideComponent
+    AsideComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

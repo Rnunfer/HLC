@@ -13,8 +13,11 @@ export class AppComponent {
 
   constructor ( private poligonoService : PoligonoService ) {}
 
-  getLado() {
+  setLado() {
+    this.poligonoService.setLado(this.lado);
+  }
 
-    this.poligonoService.getLado();
+  calcular() {
+    this.poligonoService.calcular();
   }
 }
