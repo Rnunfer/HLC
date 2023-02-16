@@ -13,8 +13,8 @@ export class HexagonoComponent{
   area :number;
 
   constructor(private poligonoService:PoligonoService) {
-    this.perimetro=this.calcPerimetro(poligonoService.getLado());
-    this.area=this.calcArea(poligonoService.getLado());
+    this.perimetro=this.calcPerimetro(this.lado);
+    this.area=this.calcArea(this.lado);
   }
 
   calcPerimetro(lado:number) : number {
@@ -22,6 +22,10 @@ export class HexagonoComponent{
   }
   calcArea(lado:number) : number {
     return (Math.sqrt(Math.pow(lado,2)-Math.pow(lado/2, 2)))*3*lado;
+  }
+
+  get lado() {
+    return this.poligonoService.lado;
   }
 
 }

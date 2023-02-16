@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PoligonoService } from '../../poligono.service';
 
 @Component({
@@ -7,21 +7,31 @@ import { PoligonoService } from '../../poligono.service';
   styles: [
   ]
 })
-export class CirculoComponent {
-  perimetro : number;
-  area:number;
+export class CirculoComponent implements OnInit{
 
-  constructor(private poligonoService:PoligonoService){
-    this.perimetro= this.calcPerimetro(poligonoService.getLado());
-    this.area= this.calcArea(poligonoService.getLado());
+  perimetro : string = this.calcPerimetro();
+  area:string = this.calcArea();
+
+  constructor(private poligonoService:PoligonoService) {}
+
+  ngOnInit(): void {
+    
+    this.poligonoService.calculo.subscribe( () => {
+      this.perimetro = this.calcPerimetro();
+      this.area = this.calcArea();
+    })
   }
 
-  calcPerimetro(lado:number) : number{
-    return Math.PI*lado;
+  calcPerimetro() : string{
+    return (Math.PI*this.lado).toFixed(2);
   }
 
-
-  calcArea(lado:number) : number{
-    return Math.PI*Math.pow(lado,2);
+  calcArea() : string{
+    return (Math.PI*Math.pow(this.lado,2)).toFixed(2);
   }
+
+  get lado() {
+    return this.poligonoService.lado;
+  }
+
 }

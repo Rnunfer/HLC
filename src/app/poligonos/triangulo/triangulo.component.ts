@@ -12,8 +12,8 @@ export class TrianguloComponent {
   area:number;
 
   constructor(private poligonoService:PoligonoService){
-    this.perimetro= this.calcPerimetro(poligonoService.getLado());
-    this.area= this.calcArea(poligonoService.getLado());
+    this.perimetro= this.calcPerimetro(this.lado);
+    this.area= this.calcArea(this.lado);
   }
 
   calcPerimetro(lado:number) : number{
@@ -23,5 +23,9 @@ export class TrianguloComponent {
 
   calcArea(lado:number) : number{
     return Math.sqrt(3/4)*Math.pow(lado, 2);
+  }
+
+  get lado() {
+    return this.poligonoService.lado;
   }
 }
