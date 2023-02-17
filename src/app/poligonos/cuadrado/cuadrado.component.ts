@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {PoligonoService} from "../../poligono.service";
 
 @Component({
@@ -7,15 +7,20 @@ import {PoligonoService} from "../../poligono.service";
   styles: [
   ]
 })
-export class CuadradoComponent {
-  perimetro :number;
-  area :number;
+export class CuadradoComponent implements OnInit {
+  perimetro !:number;
+  area !:number;
 
   constructor(private poligonoService:PoligonoService) {
-    this.perimetro=this.calcPerimetro(this.lado);
-    this.area=this.calcArea(this.lado);
+    this.perimetro = this.calcPerimetro(this.poligonoService.lado);
+    this.area = this.calcArea(this.poligonoService.lado);
   }
-
+  ngOnInit() {
+    this.poligonoService.calculo.subscribe( () => {
+      this.perimetro = this.calcPerimetro(this.poligonoService.lado);
+      this.area = this.calcArea(this.poligonoService.lado);
+    })
+  }
   calcPerimetro(lado:number) : number {
     return lado*4;
   }
