@@ -6,6 +6,7 @@ import { HexagonoComponent } from './hexagono/hexagono.component';
 import { PentagonoComponent } from './pentagono/pentagono.component';
 import { RectanguloComponent } from './rectangulo/rectangulo.component';
 import { TrianguloComponent } from './triangulo/triangulo.component';
+import { CardComponent } from './card/card.component';
 
 
 
@@ -16,7 +17,8 @@ import { TrianguloComponent } from './triangulo/triangulo.component';
     HexagonoComponent,
     PentagonoComponent,
     RectanguloComponent,
-    TrianguloComponent
+    TrianguloComponent,
+    CardComponent
   ],
   exports: [
     CirculoComponent,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PoligonoService } from '../../poligono.service';
+import { Poligono } from '../../interfaces/poligono.interface';
 
 @Component({
   selector: 'app-circulo',
@@ -9,16 +10,19 @@ import { PoligonoService } from '../../poligono.service';
 })
 export class CirculoComponent implements OnInit{
 
-  perimetro : string = this.calcPerimetro();
-  area:string = this.calcArea();
+  poligono: Poligono = {
+    img: "circle.png",
+    perimetro: this.calcPerimetro(),
+    area: this.calcArea()
+  }
 
   constructor(private poligonoService:PoligonoService) {}
 
   ngOnInit(): void {
-    
+
     this.poligonoService.calculo.subscribe( () => {
-      this.perimetro = this.calcPerimetro();
-      this.area = this.calcArea();
+      this.poligono.perimetro = this.calcPerimetro();
+      this.poligono.area = this.calcArea();
     })
   }
 
