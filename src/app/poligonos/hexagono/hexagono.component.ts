@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Poligono } from 'src/app/interfaces/poligono.interface';
 import {PoligonoService} from "../../poligono.service";
 
 @Component({
@@ -9,18 +10,18 @@ import {PoligonoService} from "../../poligono.service";
 })
 export class HexagonoComponent implements OnInit{
 
-  perimetro :number;
-  area :number;
-
-  constructor(private poligonoService:PoligonoService) {
-    this.perimetro = this.calcPerimetro(this.poligonoService.lado);
-    this.area = this.calcArea(this.poligonoService.lado);
+  poligono: Poligono = {
+    img: "hexagon.png",
+    perimetro: this.calcPerimetro(this.poligonoService.lado),
+    area: this.calcArea(this.poligonoService.lado)
   }
+
+  constructor(private poligonoService:PoligonoService) {}
 
   ngOnInit() {
     this.poligonoService.calculo.subscribe( () => {
-      this.perimetro = this.calcPerimetro(this.poligonoService.lado);
-      this.area = this.calcArea(this.poligonoService.lado);
+      this.poligono.perimetro = this.calcPerimetro(this.poligonoService.lado);
+      this.poligono.area = this.calcArea(this.poligonoService.lado);
     })
   }
 
@@ -29,10 +30,6 @@ export class HexagonoComponent implements OnInit{
   }
   calcArea(lado:number) : number {
     return (Math.sqrt(Math.pow(lado,2)-Math.pow(lado/2, 2)))*3*lado;
-  }
-
-  get lado() {
-    return this.poligonoService.lado;
   }
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Poligono } from 'src/app/interfaces/poligono.interface';
 import {PoligonoService} from "../../poligono.service";
 
 @Component({
@@ -8,17 +9,19 @@ import {PoligonoService} from "../../poligono.service";
   ]
 })
 export class PentagonoComponent implements OnInit{
-  perimetro !:number;
-  area !:number;
-
-  constructor(private poligonoService:PoligonoService) {
-    this.perimetro = this.calcPerimetro(this.poligonoService.lado);
-    this.area = this.calcArea(this.poligonoService.lado);
+  
+  poligono: Poligono = {
+    img: "pentagon.png",
+    perimetro: this.calcPerimetro(this.poligonoService.lado),
+    area: this.calcArea(this.poligonoService.lado)
   }
+
+  constructor(private poligonoService:PoligonoService) {}
+
   ngOnInit() {
     this.poligonoService.calculo.subscribe( () => {
-      this.perimetro = this.calcPerimetro(this.poligonoService.lado);
-      this.area = this.calcArea(this.poligonoService.lado);
+      this.poligono.perimetro = this.calcPerimetro(this.poligonoService.lado);
+      this.poligono.area = this.calcArea(this.poligonoService.lado);
     })
   }
 
@@ -29,7 +32,4 @@ export class PentagonoComponent implements OnInit{
     return (lado/(Math.tan(36*Math.PI/180)))*lado*2.5/2;
   }
 
-  get lado() {
-    return this.poligonoService.lado;
-  }
 }

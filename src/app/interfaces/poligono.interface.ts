@@ -1,6 +1,6 @@
 export interface Poligono {
 
   img: string;
-  perimetro: string;
-  area: string;
+  perimetro: number;
+  area: number;
 }

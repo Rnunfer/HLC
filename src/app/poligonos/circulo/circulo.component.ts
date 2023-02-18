@@ -12,8 +12,8 @@ export class CirculoComponent implements OnInit{
 
   poligono: Poligono = {
     img: "circle.png",
-    perimetro: this.calcPerimetro(),
-    area: this.calcArea()
+    perimetro: this.calcPerimetro(this.poligonoService.lado),
+    area: this.calcArea(this.poligonoService.lado)
   }
 
   constructor(private poligonoService:PoligonoService) {}
@@ -21,21 +21,17 @@ export class CirculoComponent implements OnInit{
   ngOnInit(): void {
 
     this.poligonoService.calculo.subscribe( () => {
-      this.poligono.perimetro = this.calcPerimetro();
-      this.poligono.area = this.calcArea();
+      this.poligono.perimetro = this.calcPerimetro(this.poligonoService.lado);
+      this.poligono.area = this.calcArea(this.poligonoService.lado);
     })
   }
 
-  calcPerimetro() : string{
-    return (Math.PI*this.lado).toFixed(2);
+  calcPerimetro(lado:number) : number{
+    return Math.PI*lado
   }
 
-  calcArea() : string{
-    return (Math.PI*Math.pow(this.lado,2)).toFixed(2);
-  }
-
-  get lado() {
-    return this.poligonoService.lado;
+  calcArea(lado:number) : number{
+    return Math.PI*Math.pow(lado,2);
   }
 
 }
