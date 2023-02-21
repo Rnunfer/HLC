@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { PoligonoService } from '../../poligono.service';
+import {Poligono} from "../../interfaces/poligono.interface";
 
 @Component({
   selector: 'app-triangulo',
@@ -8,12 +9,15 @@ import { PoligonoService } from '../../poligono.service';
   ]
 })
 export class TrianguloComponent {
-  perimetro : number;
-  area:number;
+
+  poligono: Poligono = {
+    img: "triangle.png",
+    perimetro: this.calcPerimetro(this.poligonoService.lado),
+    area: this.calcArea(this.poligonoService.lado)
+  }
 
   constructor(private poligonoService:PoligonoService){
-    this.perimetro= this.calcPerimetro(this.lado);
-    this.area= this.calcArea(this.lado);
+
   }
 
   calcPerimetro(lado:number) : number{
@@ -27,5 +31,12 @@ export class TrianguloComponent {
 
   get lado() {
     return this.poligonoService.lado;
+  }
+
+  ngOnInit() {
+    this.poligonoService.calculo.subscribe( () => {
+      this.poligono.perimetro = this.calcPerimetro(this.poligonoService.lado);
+      this.poligono.area = this.calcArea(this.poligonoService.lado);
+    })
   }
 }
